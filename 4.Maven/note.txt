@@ -17,3 +17,6 @@ https://mvnrepository.com/
 
 Maven-effective-pom.xml
 In Maven, the Effective POM is the final pom.xml configuration after Maven combines your project's POM with its parent POMs, inherited settings, and applicable default configurations.
+
+Maven repositories are stored in the local `.m2` folder.
+first check here if not present then go and download.
