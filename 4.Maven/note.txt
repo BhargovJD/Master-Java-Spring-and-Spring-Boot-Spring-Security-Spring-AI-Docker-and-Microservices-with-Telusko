@@ -1,0 +1,19 @@
+Maven:
+Maven is a Java build automation and dependency management tool that automatically downloads and manages libraries required by your project.
+It also helps compile code, run tests, and package your application into JAR or WAR files.
+
+Archetype:
+In Maven, Archetype is a template used to create a new project with a predefined folder structure and files.
+For example, the maven-archetype-quickstart archetype creates a basic Java project with sample Java and test files.
+
+pom.xml:
+In Maven, pom.xml stands for Project Object Model. It is the main configuration file of a Maven project.
+It contains:
+- Dependencies: External libraries your project needs.
+- Project details: Name, version, and group ID.
+- Build configuration: How Maven builds your project.
+- Plugins: Tools used during the build process.
+https://mvnrepository.com/
+
+Maven-effective-pom.xml
+In Maven, the Effective POM is the final pom.xml configuration after Maven combines your project's POM with its parent POMs, inherited settings, and applicable default configurations.
