@@ -10,17 +10,16 @@ public class DemoJdbc {
         String password = "password";
 
         // Data stored in Java variables
-        int id = 7;
-        String chaiName = "Green Tea";
+        int id = 8;
+        String chaiName = "Old Tea";
         int price = 40;
         String chaiType = "Green";
         boolean available = true;
 
-        // SQL query using variable values
+        // SQL query with placeholders
         String query = "INSERT INTO chai_store "
                 + "(id, chai_name, price, chai_type, available) "
-                + "VALUES (" + id + ", '" + chaiName + "', "
-                + price + ", '" + chaiType + "', " + available + ")";
+                + "VALUES (?, ?, ?, ?, ?)";
 
         try {
 
@@ -31,15 +30,24 @@ public class DemoJdbc {
 
             System.out.println("PostgreSQL connected successfully!");
 
-            Statement st = con.createStatement();
+            // Create PreparedStatement
+            PreparedStatement pst = con.prepareStatement(query);
 
-            int rows = st.executeUpdate(query);
+            // Set variable values in the placeholders
+            pst.setInt(1, id);
+            pst.setString(2, chaiName);
+            pst.setInt(3, price);
+            pst.setString(4, chaiType);
+            pst.setBoolean(5, available);
+
+            // Execute INSERT query
+            int rows = pst.executeUpdate();
 
             if (rows > 0) {
                 System.out.println("Chai inserted successfully!");
             }
 
-            st.close();
+            pst.close();
             con.close();
 
             System.out.println("PostgreSQL connection CLOSED!");
