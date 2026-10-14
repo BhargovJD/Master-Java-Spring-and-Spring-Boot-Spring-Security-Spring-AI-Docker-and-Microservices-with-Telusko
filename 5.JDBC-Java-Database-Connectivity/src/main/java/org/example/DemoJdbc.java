@@ -9,8 +9,9 @@ public class DemoJdbc {
         String username = "postgres";
         String password = "password";
 
-        String query = "SELECT * FROM chai_store";
-
+        // SQL query to insert a new row
+        String query = "INSERT INTO chai_store (id, chai_name, price, chai_type, available) "
+                + "VALUES (7, 'New chai', 30, 'Milk type', true)";
         try {
 
             Class.forName("org.postgresql.Driver");
@@ -21,22 +22,13 @@ public class DemoJdbc {
 
             Statement st = con.createStatement();
 
-            ResultSet rs = st.executeQuery(query);
+            // Execute INSERT query
+            int rows = st.executeUpdate(query);
 
-            // Loop through every row returned by SELECT *
-            while (rs.next()) {
-
-                // Retrieve values from each column
-                int id = rs.getInt("id");
-                String chaiName = rs.getString("chai_name");
-
-                // Print the data
-                System.out.println("ID: " + id);
-                System.out.println("Chai Name: " + chaiName);
-                System.out.println("----------------------");
+            if (rows > 0) {
+                System.out.println("Chai inserted successfully!");
             }
 
-            rs.close();
             st.close();
             con.close();
 
