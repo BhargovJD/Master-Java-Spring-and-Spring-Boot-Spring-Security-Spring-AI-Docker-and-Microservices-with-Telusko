@@ -9,8 +9,18 @@ public class DemoJdbc {
         String username = "postgres";
         String password = "password";
 
-        // SQL query to delete an existing row
-        String query = "DELETE FROM chai_store WHERE id = 7";
+        // Data stored in Java variables
+        int id = 7;
+        String chaiName = "Green Tea";
+        int price = 40;
+        String chaiType = "Green";
+        boolean available = true;
+
+        // SQL query using variable values
+        String query = "INSERT INTO chai_store "
+                + "(id, chai_name, price, chai_type, available) "
+                + "VALUES (" + id + ", '" + chaiName + "', "
+                + price + ", '" + chaiType + "', " + available + ")";
 
         try {
 
@@ -23,13 +33,10 @@ public class DemoJdbc {
 
             Statement st = con.createStatement();
 
-            // Execute DELETE query
             int rows = st.executeUpdate(query);
 
             if (rows > 0) {
-                System.out.println("Chai deleted successfully!");
-            } else {
-                System.out.println("No chai found with the given ID!");
+                System.out.println("Chai inserted successfully!");
             }
 
             st.close();
