@@ -8,8 +8,10 @@
         <property name="hibernate.connection.password">password</property>
 
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+<!--        PostgreSQLDialect tells Hibernate which type of database you are using and how to generate SQL that PostgreSQL understands.-->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
+<!--        <property name="hibernate.format_sql">true</property>-->
 
         <mapping class="org.example.Student"/>
 
