@@ -3,6 +3,7 @@ package org.example;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class Main {
@@ -18,17 +19,28 @@ public class Main {
         // Open session
         try (Session session = factory.openSession()) {
 
+            // Start transaction
+            Transaction tx = session.beginTransaction();
+
             // Fetch student by ID
             Student student = session.find(Student.class, 1);
 
-            // Check whether student exists
             if (student != null) {
 
+                // Update student details
+                student.setName("Amit");
+                student.setAge(25);
+
+                // Save changes
+                tx.commit();
+
+                System.out.println("Student updated successfully!");
                 System.out.println("Student ID: " + student.getId());
                 System.out.println("Name: " + student.getName());
                 System.out.println("Age: " + student.getAge());
 
             } else {
+                tx.rollback();
                 System.out.println("Student not found!");
             }
 
