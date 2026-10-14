@@ -8,3 +8,5 @@ Example: Spring manages Car	                                Example: Spring inje
 
 
 IoC is a principle in which control over object creation and management is transferred to the Spring container. DI is the technique through which Spring provides the dependencies required by an object, commonly using constructor injection.
+
+@Autowired is an annotation used to inject a dependency automatically. It tells Spring to provide the required object instead of you creating it manually.
