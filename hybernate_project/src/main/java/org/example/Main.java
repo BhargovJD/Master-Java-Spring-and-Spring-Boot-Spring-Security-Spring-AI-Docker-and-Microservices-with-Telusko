@@ -11,28 +11,34 @@ public class Main {
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Student.class)
-                .addAnnotatedClass(IDCard.class)
+                .addAnnotatedClass(Department.class)
+                .addAnnotatedClass(Employee.class)
                 .buildSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
 
-        Student student = new Student();
-        student.setId(1);
-        student.setName("Rahul");
+        // Create department
+        Department department = new Department();
+        department.setId(1);
+        department.setName("IT");
 
-        IDCard card = new IDCard();
-        card.setId(101);
-        card.setCardNumber("CARD101");
+        // Create first employee
+        Employee e1 = new Employee();
+        e1.setId(101);
+        e1.setName("Rahul");
+        e1.setDepartment(department);
 
-        // Connect both objects
-        student.setCard(card);
-        card.setStudent(student);
+        // Create second employee
+        Employee e2 = new Employee();
+        e2.setId(102);
+        e2.setName("Amit");
+        e2.setDepartment(department);
 
-        // Save both objects
-        session.persist(student);
-        session.persist(card);
+        // Save all three objects
+        session.persist(department);
+        session.persist(e1);
+        session.persist(e2);
 
         tx.commit();
 

@@ -2,20 +2,22 @@ package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
-public class Student {
+public class Employee {
 
     @Id
     private int id;
 
     private String name;
 
-    @OneToOne
-    private IDCard card;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
-    public Student() {
+    public Employee() {
     }
 
     public int getId() {
@@ -34,11 +36,11 @@ public class Student {
         this.name = name;
     }
 
-    public IDCard getCard() {
-        return card;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setCard(IDCard card) {
-        this.card = card;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

@@ -2,3 +2,4 @@ Hibernate is a Java ORM (Object-Relational Mapping) framework that helps you con
 
 What does @Embeddable mean?
 It tells Hibernate that this class is designed to be embedded inside another entity. By itself, Address does not need its own database table.
+@OneToMany	One record relates to many records	Department → Employees
