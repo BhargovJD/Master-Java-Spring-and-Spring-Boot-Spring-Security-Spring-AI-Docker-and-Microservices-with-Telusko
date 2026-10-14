@@ -27,17 +27,13 @@ public class Main {
 
             if (student != null) {
 
-                // Update student details
-                student.setName("Amit");
-                student.setAge(25);
+                // Delete student
+                session.remove(student);
 
-                // Save changes
+                // Commit transaction
                 tx.commit();
 
-                System.out.println("Student updated successfully!");
-                System.out.println("Student ID: " + student.getId());
-                System.out.println("Name: " + student.getName());
-                System.out.println("Age: " + student.getAge());
+                System.out.println("Student deleted successfully!");
 
             } else {
                 tx.rollback();
