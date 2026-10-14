@@ -10,32 +10,31 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Configure Hibernate
         SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Alien.class)
+                .configure()
+                .addAnnotatedClass(Student.class)
                 .buildSessionFactory();
 
-        // Create Alien object
-        Alien alien = new Alien();
-        alien.setAid(1);
-        alien.setAname("Rahul");
-        alien.setTech("Java");
+        // Create address object
+        Address address = new Address();
+        address.setCity("Guwahati");
+        address.setState("Assam");
 
-        // Open session
+        // Create student object
+        Student student = new Student();
+        student.setId(1);
+        student.setName("Rahul");
+        student.setAddress(address);
+
         try (Session session = factory.openSession()) {
 
-            // Start transaction
             Transaction tx = session.beginTransaction();
 
-            // Insert alien data
-            session.persist(alien);
+            session.persist(student);
 
-            // Commit transaction
             tx.commit();
 
-            System.out.println("Alien inserted successfully!");
-            System.out.println(alien);
+            System.out.println("Student saved successfully!");
 
         } catch (Exception e) {
             e.printStackTrace();

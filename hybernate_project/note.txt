@@ -1,1 +1,4 @@
 Hibernate is a Java ORM (Object-Relational Mapping) framework that helps you connect Java applications to databases like PostgreSQL and MySQL without writing SQL queries for every database operation.
+
+What does @Embeddable mean?
+It tells Hibernate that this class is designed to be embedded inside another entity. By itself, Address does not need its own database table.

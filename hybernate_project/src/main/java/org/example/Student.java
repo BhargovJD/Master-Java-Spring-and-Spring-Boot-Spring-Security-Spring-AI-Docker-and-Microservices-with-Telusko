@@ -3,30 +3,24 @@ package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 
 @Entity
-@Table(name = "student")
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "age")
-    private int age;
+    @Embedded
+    private Address address;
 
-    // Default constructor required by Hibernate
+
+//    default const.
     public Student() {
     }
 
-    // Getters and setters
     public int getId() {
         return id;
     }
@@ -43,11 +37,11 @@ public class Student {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
