@@ -13,8 +13,14 @@ public class Main {
         // Configure Hibernate
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Alien.class)
                 .buildSessionFactory();
+
+        // Create Alien object
+        Alien alien = new Alien();
+        alien.setAid(1);
+        alien.setAname("Rahul");
+        alien.setTech("Java");
 
         // Open session
         try (Session session = factory.openSession()) {
@@ -22,23 +28,14 @@ public class Main {
             // Start transaction
             Transaction tx = session.beginTransaction();
 
-            // Fetch student by ID
-            Student student = session.find(Student.class, 1);
+            // Insert alien data
+            session.persist(alien);
 
-            if (student != null) {
+            // Commit transaction
+            tx.commit();
 
-                // Delete student
-                session.remove(student);
-
-                // Commit transaction
-                tx.commit();
-
-                System.out.println("Student deleted successfully!");
-
-            } else {
-                tx.rollback();
-                System.out.println("Student not found!");
-            }
+            System.out.println("Alien inserted successfully!");
+            System.out.println(alien);
 
         } catch (Exception e) {
             e.printStackTrace();
