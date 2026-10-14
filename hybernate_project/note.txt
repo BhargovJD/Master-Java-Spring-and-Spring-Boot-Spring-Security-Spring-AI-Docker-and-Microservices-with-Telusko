@@ -1,0 +1,1 @@
+Hibernate is a Java ORM (Object-Relational Mapping) framework that helps you connect Java applications to databases like PostgreSQL and MySQL without writing SQL queries for every database operation.
