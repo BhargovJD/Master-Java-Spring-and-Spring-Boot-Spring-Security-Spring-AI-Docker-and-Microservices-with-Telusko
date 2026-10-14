@@ -2,22 +2,22 @@ package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Employee {
+public class Student {
 
     @Id
     private int id;
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
+    @ManyToMany
+    private List<Course> courses = new ArrayList<>();
 
-    public Employee() {
+    public Student() {
     }
 
     public int getId() {
@@ -36,11 +36,11 @@ public class Employee {
         this.name = name;
     }
 
-    public Department getDepartment() {
-        return department;
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

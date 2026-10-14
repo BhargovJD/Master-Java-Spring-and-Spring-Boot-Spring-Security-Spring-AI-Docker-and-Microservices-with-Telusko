@@ -11,34 +11,45 @@ public class Main {
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Department.class)
-                .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
 
-        // Create department
-        Department department = new Department();
-        department.setId(1);
-        department.setName("IT");
+        // Create first student
+        Student s1 = new Student();
+        s1.setId(1);
+        s1.setName("Rahul");
 
-        // Create first employee
-        Employee e1 = new Employee();
-        e1.setId(101);
-        e1.setName("Rahul");
-        e1.setDepartment(department);
+        // Create second student
+        Student s2 = new Student();
+        s2.setId(2);
+        s2.setName("Amit");
 
-        // Create second employee
-        Employee e2 = new Employee();
-        e2.setId(102);
-        e2.setName("Amit");
-        e2.setDepartment(department);
+        // Create first course
+        Course c1 = new Course();
+        c1.setId(101);
+        c1.setName("Java");
 
-        // Save all three objects
-        session.persist(department);
-        session.persist(e1);
-        session.persist(e2);
+        // Create second course
+        Course c2 = new Course();
+        c2.setId(102);
+        c2.setName("Python");
+
+        // Assign courses to students
+        s1.getCourses().add(c1);
+        s1.getCourses().add(c2);
+
+        s2.getCourses().add(c1);
+        s2.getCourses().add(c2);
+
+        // Save all entities
+        session.persist(c1);
+        session.persist(c2);
+        session.persist(s1);
+        session.persist(s2);
 
         tx.commit();
 
