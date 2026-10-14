@@ -9,13 +9,8 @@ public class DemoJdbc {
         String username = "postgres";
         String password = "password";
 
-        // SQL query to update an existing row
-        String query = "UPDATE chai_store "
-                + "SET chai_name = 'Updated Chai', "
-                + "price = 50, "
-                + "chai_type = 'Ginger Milk Tea', "
-                + "available = false "
-                + "WHERE id = 7";
+        // SQL query to delete an existing row
+        String query = "DELETE FROM chai_store WHERE id = 7";
 
         try {
 
@@ -28,11 +23,11 @@ public class DemoJdbc {
 
             Statement st = con.createStatement();
 
-            // Execute UPDATE query
+            // Execute DELETE query
             int rows = st.executeUpdate(query);
 
             if (rows > 0) {
-                System.out.println("Chai updated successfully!");
+                System.out.println("Chai deleted successfully!");
             } else {
                 System.out.println("No chai found with the given ID!");
             }
