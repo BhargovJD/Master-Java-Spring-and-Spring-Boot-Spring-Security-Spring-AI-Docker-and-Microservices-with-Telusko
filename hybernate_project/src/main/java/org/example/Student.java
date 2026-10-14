@@ -1,9 +1,8 @@
-
 package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Embedded;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -13,11 +12,9 @@ public class Student {
 
     private String name;
 
-    @Embedded
-    private Address address;
+    @OneToOne
+    private IDCard card;
 
-
-//    default const.
     public Student() {
     }
 
@@ -37,11 +34,11 @@ public class Student {
         this.name = name;
     }
 
-    public Address getAddress() {
-        return address;
+    public IDCard getCard() {
+        return card;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCard(IDCard card) {
+        this.card = card;
     }
 }

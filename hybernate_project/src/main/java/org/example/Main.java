@@ -1,4 +1,3 @@
-
 package org.example;
 
 import org.hibernate.Session;
@@ -11,36 +10,33 @@ public class Main {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
-                .configure()
+                .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(IDCard.class)
                 .buildSessionFactory();
 
-        // Create address object
-        Address address = new Address();
-        address.setCity("Guwahati");
-        address.setState("Assam");
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
 
-        // Create student object
         Student student = new Student();
         student.setId(1);
         student.setName("Rahul");
-        student.setAddress(address);
 
-        try (Session session = factory.openSession()) {
+        IDCard card = new IDCard();
+        card.setId(101);
+        card.setCardNumber("CARD101");
 
-            Transaction tx = session.beginTransaction();
+        // Connect both objects
+        student.setCard(card);
+        card.setStudent(student);
 
-            session.persist(student);
+        // Save both objects
+        session.persist(student);
+        session.persist(card);
 
-            tx.commit();
+        tx.commit();
 
-            System.out.println("Student saved successfully!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        } finally {
-            factory.close();
-        }
+        session.close();
+        factory.close();
     }
 }
