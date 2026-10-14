@@ -1,0 +1,10 @@
+https://start.spring.io/
+
+IoC	                                                              DI
+Inversion of Control	                                    Dependency Injection
+A broader principle	                                        A technique to implement IoC
+Spring manages object creation and lifecycle	            Spring provides required dependencies
+Example: Spring manages Car	                                Example: Spring injects Engine into Car
+
+
+IoC is a principle in which control over object creation and management is transferred to the Spring container. DI is the technique through which Spring provides the dependencies required by an object, commonly using constructor injection.
