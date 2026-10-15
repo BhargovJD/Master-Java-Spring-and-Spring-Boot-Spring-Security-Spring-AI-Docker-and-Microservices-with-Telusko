@@ -1,0 +1,2 @@
+Create project using maven arch.
+org.apache.maven.archetypes:maven-archetype-quickstart
