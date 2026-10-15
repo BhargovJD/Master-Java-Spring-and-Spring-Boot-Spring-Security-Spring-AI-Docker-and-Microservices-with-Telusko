@@ -5,11 +5,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <!-- Create an Alien object -->
-    <bean id="alien" class="org.example.Alien" autowire="byName">
+    <!-- Eager: created while the context starts -->
+    <bean id="alien" class="org.example.Alien">
         <property name="age" value="21"/>
     </bean>
 
-    <bean id="comp" class="org.example.Desktop"></bean>
+    <!-- Lazy: created only on the first getBean("desktop") -->
+    <bean id="desktop" class="org.example.Desktop" lazy-init="true"/>
 
 </beans>
