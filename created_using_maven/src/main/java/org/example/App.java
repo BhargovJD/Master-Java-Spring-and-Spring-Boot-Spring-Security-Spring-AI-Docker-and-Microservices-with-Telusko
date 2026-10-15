@@ -11,6 +11,8 @@ public class App
 {
     public static void main( String[] args )
     {
+
+//        Obj. created in this line
         ApplicationContext  context = new ClassPathXmlApplicationContext("spring.xml");
 
 //      System.out.println( "Hello World!" );
