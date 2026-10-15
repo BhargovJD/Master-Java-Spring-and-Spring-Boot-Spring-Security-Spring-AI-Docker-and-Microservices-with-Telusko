@@ -7,8 +7,10 @@
 
 <!--    To create two diff. obj-->
 <bean id="alien" class="org.example.Alien" >
-    <property name="age" value="21"></property>
-    <property name="lap" ref="lap1"></property>
+    <constructor-arg name="age" value="21"></constructor-arg>
+    <constructor-arg name="lap" ref="lap1"></constructor-arg>
+
+<!--    <property name="lap" ref="lap1"></property>-->
 </bean>
 
     <bean id="lap1" class="org.example.Laptop">
