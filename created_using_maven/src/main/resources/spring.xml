@@ -5,15 +5,11 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-<!--    To create two diff. obj-->
-<bean id="alien" class="org.example.Alien" >
-    <constructor-arg name="age" value="21"></constructor-arg>
-    <constructor-arg name="lap" ref="lap1"></constructor-arg>
-
-<!--    <property name="lap" ref="lap1"></property>-->
-</bean>
-
-    <bean id="lap1" class="org.example.Laptop">
+    <!-- Create an Alien object -->
+    <bean id="alien" class="org.example.Alien" autowire="byName">
+        <property name="age" value="21"/>
     </bean>
+
+    <bean id="comp" class="org.example.Desktop"></bean>
 
 </beans>

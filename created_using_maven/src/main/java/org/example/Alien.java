@@ -6,26 +6,7 @@ public class Alien {
 
     private int age;
 
-    private Laptop lap;
-
-    public Alien(){
-        System.out.println("Alien obj. created");
-    }
-
-
-    @ConstructorProperties({"age","lap"})
-    public Alien(int age, Laptop lap) {
-        this.age = age;
-        this.lap = lap;
-    }
-
-    public Laptop getLap() {
-        return lap;
-    }
-
-    public void setLap(Laptop lap) {
-        this.lap = lap;
-    }
+    private Computer comp;
 
     public int getAge() {
         return age;
@@ -35,8 +16,16 @@ public class Alien {
         this.age = age;
     }
 
+    public Computer getComp() {
+        return comp;
+    }
+
+    public void setComp(Computer comp) {
+        this.comp = comp;
+    }
+
     public void code(){
         System.out.println("Coding...");
-        lap.compile();
+        comp.compile();
     }
 }
