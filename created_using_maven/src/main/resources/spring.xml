@@ -6,7 +6,8 @@
 
 
 <!--    To create two diff. obj-->
-<bean id="alien" class="org.example.Alien" scope="prototype">
+<bean id="alien" class="org.example.Alien" >
+    <property name="age" value="21"></property>
 </bean>
 
     <bean id="lap" class="org.example.Laptop">
