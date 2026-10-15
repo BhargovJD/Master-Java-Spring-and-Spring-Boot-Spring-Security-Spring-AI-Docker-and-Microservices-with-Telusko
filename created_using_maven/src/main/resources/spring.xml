@@ -5,12 +5,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <!-- Eager: created while the context starts -->
     <bean id="alien" class="org.example.Alien">
         <property name="age" value="21"/>
+        <!-- Inner bean: created for this property only, and not registered by id -->
+        <property name="comp">
+            <bean class="org.example.Desktop"/>
+        </property>
     </bean>
-
-    <!-- Lazy: created only on the first getBean("desktop") -->
-    <bean id="desktop" class="org.example.Desktop" lazy-init="true"/>
 
 </beans>
