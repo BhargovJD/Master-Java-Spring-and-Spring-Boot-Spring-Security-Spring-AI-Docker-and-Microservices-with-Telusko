@@ -4,7 +4,9 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="alien" class="org.example.Alien">
+
+<!--    To create two diff. obj-->
+<bean id="alien" class="org.example.Alien" scope="prototype">
 </bean>
 
     <bean id="lap" class="org.example.Laptop">
